@@ -33,6 +33,7 @@ public class Lista1Exercicio6 {
 		//%d inteiro
 		//%s string chama a string
 		//%b boolean
+		//%c
 		
 		System.out.printf("A distância entre o ponto P1: (" + x1 + "; " + y1 + ") e P2: ("  + x2 + "; " + y2 + ") é: %.2f" + d);
 		
