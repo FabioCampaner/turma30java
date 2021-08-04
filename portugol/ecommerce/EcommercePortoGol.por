@@ -1,5 +1,5 @@
 
-//VERSÃO 1.1
+//VERSÃO FINAL
 programa
 {
 	inclua biblioteca Calendario
@@ -16,7 +16,7 @@ programa
 	
 
 	const inteiro   	     
-	LIMITE_NOTAS = 4   // Constante que dita a quantidade máxima de notas fiscais que podem ser salvas.
+	LIMITE_NOTAS = 3   // Constante que dita a quantidade máxima de notas fiscais que podem ser salvas.
 	
 
 	//MATRIZES E VETORES DA FUNÇÃO NOTA FISCAL -------------------------------------------------- //
@@ -84,6 +84,7 @@ programa
 		cadeia 
 		valor[DIVERSIDADE_PRODUTOS]
 
+
 		// variáveis com os valores: total da compra e fatura a pagar.
 		real 
 		valorTotalCompra = 0.00, 
@@ -102,7 +103,7 @@ programa
 		estoqueInicial[DIVERSIDADE_PRODUTOS] 
 		
 		// variáveis das respostas:
-		inteiro  
+		caracter 
 		opcaoPagamento
 		
 		// variável auxiliar dos índices e laços:
@@ -336,17 +337,18 @@ programa
 								
 									escreva("Escolha a sua opção de pagamento: ")
 									leia(opcaoPagamento)
-									se (opcaoPagamento != 1 e opcaoPagamento != 2 e opcaoPagamento != 3) {
+									
+									se (opcaoPagamento != '1' e opcaoPagamento != '2' e opcaoPagamento != '3' ou Tipos.cadeia_e_inteiro(Tipos.caracter_para_cadeia(opcaoPagamento),10)== falso) {
 										escreva("Digite uma opção válida!\n")	
 									}
 								// (FIM) 9 - (faça - enquanto) que valida se a opção de pagamento é válida.
-								} enquanto(opcaoPagamento != 1 e opcaoPagamento != 2 e opcaoPagamento != 3)
+								} enquanto(opcaoPagamento != '1' e opcaoPagamento != '2' e opcaoPagamento != '3')
 								
-								se (opcaoPagamento == 1) {
+								se (opcaoPagamento == '1') {
 									valorFatura = Mat.arredondar(((valorTotalCompra / 100) * 90), 2)
 									quantidadeFaturas = 0
 								}
-								senao se (opcaoPagamento == 2) { 
+								senao se (opcaoPagamento == '2') { 
 									valorFatura = Mat.arredondar(((valorTotalCompra / 100) * 110), 2)
 									quantidadeFaturas = 1
 								}
@@ -636,11 +638,11 @@ programa
 			
 					formataValorTotal[x] = Tipos.real_para_cadeia(Mat.arredondar((Tipos.cadeia_para_real(valorMatriz[numeroNotaFiscal][x]) * estoqueSelecionadoMatriz[numeroNotaFiscal][x]), 2))
 										
-					formataImposto[x] = Tipos.real_para_cadeia(Mat.arredondar(((Tipos.cadeia_para_real(valorMatriz[numeroNotaFiscal][x]) / 100) * 9), 2))
+					formataImposto[x] = Tipos.real_para_cadeia(Mat.arredondar(((Tipos.cadeia_para_real(valorMatriz[numeroNotaFiscal][x]) / 100) * 15), 2))
 										
 			
 					formataValorTotalNumero = Texto.numero_caracteres(Tipos.real_para_cadeia(Mat.arredondar((Tipos.cadeia_para_real(valorMatriz[numeroNotaFiscal][x]) * estoqueSelecionado[x]), 2)))
-					formataImpostoNumero = Texto.numero_caracteres(Tipos.real_para_cadeia(Mat.arredondar(((Tipos.cadeia_para_real(valorMatriz[numeroNotaFiscal][x]) / 100) * 9), 2)))
+					formataImpostoNumero = Texto.numero_caracteres(Tipos.real_para_cadeia(Mat.arredondar(((Tipos.cadeia_para_real(valorMatriz[numeroNotaFiscal][x]) / 100) * 15), 2)))
 		
 					enquanto (formataValorTotalNumero <= 7) {
 					formataValorTotalNumero ++
@@ -661,7 +663,16 @@ programa
 					
 	}
 	// FIM DA FUNÇÃO NOTA FISCAL ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
-	
+
+	/* Nós somos alunes da Generation Brasil, esse é o nosso estudo sobre princípios da lógica de programação feito em Portugol.
+	 *  Equipe:
+	 *  Ana Carolina Gonzales 
+	 *  Andrei Felipe
+	 *  Fábio Campaner Suzuki
+	 *  Marcos Coutinho
+	 *  Stefani Tosi
+	 *  Vinícios Lisboa
+	 */
 }
 
 /* $$$ Portugol Studio $$$ 
@@ -669,7 +680,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 27981; 
+ * @POSICAO-CURSOR = 29079; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
