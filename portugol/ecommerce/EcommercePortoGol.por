@@ -59,8 +59,7 @@ programa
 	
 	//FIM - MATRIZES E VETORES DA FUNÇÃO NOTA FISCAL -------------------------------------------------- //
 	
-	funcao inicio() 
-	{
+	funcao inicio() {
 		
 		// variáveis do código e produto:
 		cadeia 
@@ -144,8 +143,7 @@ programa
 
 		
 		// Valores para estoque inicial e código:
-		para(x=0 ; x < DIVERSIDADE_PRODUTOS ; x++) 
-		{
+		para(x=0 ; x < DIVERSIDADE_PRODUTOS ; x++) {
 			codigo[x] = "G2-"+(x+1)	
 			estoqueSelecionado[x] = 0
 			estoqueInicial[x] = ESTOQUE_INICIAL
@@ -163,28 +161,22 @@ programa
 		// INÍCIO DO PROGRAMA ----------------------------------------------------------------------------------------------------------------- //
 	
 		// (faça - enquanto) responsável pelo retorno ao início da página, após a compra.
-		faca 
-		{
+		faca {
 			limpa()
 			cabecalho(3)
 	
 			// 1 - (laço faça - enquanto) valida "fazer compras".
-			faca 
-			{
-				se (numeroNotaFiscal == "0") 
-				{
+			faca {
+				se (numeroNotaFiscal == "0") {
 					escreva("  ► Deseja fazer compras?[S/N]: ")
 					leia(fazerCompras)	
 				}
 				
-				senao 
-				{
+				senao {
 					
-					se (contadorNotaFiscal == LIMITE_NOTAS) 
-					{
+					se (contadorNotaFiscal == LIMITE_NOTAS) {
 						// 2 - (faça - enquanto) ao ultrapassar o limite de notas fiscais que podem ser guardadas. 
-						faca 
-						{
+						faca {
 			
 							
 							escreva("\n ► Você fez muitas compras hoje!!\n")
@@ -192,8 +184,7 @@ programa
 							escreva(" ► Deseja visualizar suas notas fiscais anteriores? [V]\n")
 							escreva(" ► Ou digite [N] para sair: ")
 							leia(fazerCompras)
-							se (Texto.caixa_alta(fazerCompras) != "N" e Texto.caixa_alta(fazerCompras) != "V") 
-							{
+							se (Texto.caixa_alta(fazerCompras) != "N" e Texto.caixa_alta(fazerCompras) != "V") {
 								limpa()
 								cabecalho(3)
 								escreva("Resposta inválida.\n")
@@ -203,34 +194,29 @@ programa
 						} enquanto (Texto.caixa_alta(fazerCompras) != "N" e Texto.caixa_alta(fazerCompras) != "V") 
 							
 					}
-					senao 
-					{
+					senao {
 						escreva("  ► Deseja fazer compras?[S/N]\n ")	
 						escreva(" ► Ou deseja visualizar sua(s) nota(s) fiscal(is) anterior(es)? [V]: ")
 						leia(fazerCompras)
 					}
-					se (Texto.caixa_alta(fazerCompras) == "N") 
-					{
+					se (Texto.caixa_alta(fazerCompras) == "N") {
 						respostaVoltarInicio = "N"
 					}
 					
-					se (Texto.caixa_alta(fazerCompras) == "V")
-					{
+					se (Texto.caixa_alta(fazerCompras) == "V") {
 						// 3 - (faça - enquanto) visualização de notas fiscais anteriores.
 						faca {
 							escreva(" Digite o número da nota fiscal (exemplo: 1, 2, 3...) de acordo com a data de emissão: ")
 							leia(numeroNotaFiscal)
-							se (Tipos.cadeia_para_inteiro(numeroNotaFiscal, 10) >= contadorNotaFiscal){
+							se (Tipos.cadeia_para_inteiro(numeroNotaFiscal, 10) >= contadorNotaFiscal) {
 								escreva("\n Digite um valor válido!\n Você só tem ", contadorNotaFiscal-1," nota(s) fiscal(is).\n")
 							}
 							
-							senao se (Tipos.cadeia_e_inteiro(numeroNotaFiscal, 10) == falso)
-							{
+							senao se (Tipos.cadeia_e_inteiro(numeroNotaFiscal, 10) == falso) {
 								escreva("\n Digite um valor válido! Um número inteiro: ")
 							}
 							
-							senao se (Tipos.cadeia_para_inteiro(numeroNotaFiscal, 10) <= contadorNotaFiscal) 
-							{
+							senao se (Tipos.cadeia_para_inteiro(numeroNotaFiscal, 10) <= contadorNotaFiscal) {
 								notaFiscal(x, estoqueSelecionado, valorFatura, quantidadeFaturas, codigo, valor, produto, Tipos.cadeia_para_inteiro(numeroNotaFiscal, 10), contadorNotaFiscal) 
 								escreva("\n Voltar para o ínicio?[S/N]: ")
 								leia(respostaVoltarInicio)
@@ -243,12 +229,10 @@ programa
 				
 				primeiraCompra = verdadeiro
 				
-				se (Texto.caixa_alta(fazerCompras) == "S") 
-				{
+				se (Texto.caixa_alta(fazerCompras) == "S") {
 					
 					// 4 - (faça - enquanto) valida a pergunta continuar compras.
-					faca 
-					{
+					faca {
 						// chama a página de compra durante a compra.
 						paginaDeCompras(x, codigo, produto, valor, estoqueInicial, carrinho, estoqueSelecionado, carrinhoVazio)
 	
@@ -257,22 +241,17 @@ programa
 						 *  de continuarCompras seja inválida, forçando o usuário a digitar certo.*/
 						 
 						// 5 - (faça - enquanto) valida se a resposta de continuar compras é ou "S" ou "N".
-						faca 
-						{
-							se (primeiraCompra == falso)
-							{
+						faca {
+							se (primeiraCompra == falso) {
 								escreva("  ► Continuar a compra? [S/N]: ")
 								leia(continuarCompras)
 							}
-							se (Texto.caixa_alta(continuarCompras) == "S" ou primeiraCompra == verdadeiro)
-							{
+							se (Texto.caixa_alta(continuarCompras) == "S" ou primeiraCompra == verdadeiro) {
 				
 								// 6 - (faça - enquanto) valida se a resposta para o código digitado.
-								faca 
-								{
+								faca {
 								
-									se (validarCodigo == falso) 
-									{
+									se (validarCodigo == falso) {
 										escreva("  Código inválido!")
 									}
 									//a variável recebe falso para se caso entrar no próximo "se".
@@ -284,11 +263,9 @@ programa
 								
 					
 									// (laço para e condicional se) responsáveis por escrever o produto do código solicitado.
-									para(x=0 ; x < DIVERSIDADE_PRODUTOS ; x++)
-									{ 
+									para(x=0 ; x < DIVERSIDADE_PRODUTOS ; x++) { 
 										
-										se(Texto.caixa_alta(codigoDigitado) == codigo[x]) 
-										{
+										se(Texto.caixa_alta(codigoDigitado) == codigo[x]) {
 											validarCodigo = verdadeiro
 											quantidadeCompra = 0
 											linha(4)
@@ -296,26 +273,21 @@ programa
 											linha(5)
 											
 											// 7 - (laço faça - enquanto) valida o estoque selecionado.
-											faca 
-											{
+											faca {
 											
-												se (quantidadeCompra > estoqueInicial[x])
-												{
+												se (quantidadeCompra > estoqueInicial[x]) {
 													linha(10)
 													escreva("Quantidade indisponível.\n" , "Temos somente ", estoqueInicial[x] ," no estoque!\n")
 												}
-												se (estoqueSelecionado[x] != 0) 
-												{
+												se (estoqueSelecionado[x] != 0) {
 												escreva("  ► Produto já escolhido! Altere a quantidade desejada: ")
 												} 
 
 												// 8 - (faça - enquanto) valida se a quantidade do estoque digitada foi um número inteiro.
-												faca 
-												{
+												faca {
 													escreva("\n  ► Digite a quantidade desejada: ")
 													leia(auxQuantidadeCompra)
-													se (Tipos.cadeia_e_inteiro(auxQuantidadeCompra, 10) == falso )
-													{
+													se (Tipos.cadeia_e_inteiro(auxQuantidadeCompra, 10) == falso ) {
 														escreva("\n  Digite uma valor válido para quantidade!\n ")
 													}
 													
@@ -340,11 +312,9 @@ programa
 								} enquanto (validarCodigo == falso)
 							}
 							
-							senao se (Texto.caixa_alta(continuarCompras) == "N") 
-							{
+							senao se (Texto.caixa_alta(continuarCompras) == "N") {
 								
-								para (x=0 ; x < DIVERSIDADE_PRODUTOS ; x++) 
-								{
+								para (x=0 ; x < DIVERSIDADE_PRODUTOS ; x++) {
 									
 									// aqui é necessário converter o valor para um número real.
 									valorTotalCompra += (Tipos.cadeia_para_real(valor[x]) * estoqueSelecionado[x])
@@ -362,37 +332,31 @@ programa
 								linha(7)
 								
 								// 9 - (faça - enquanto) que valida se a opção de pagamento é válida.				
-								faca 
-								{
+								faca {
 								
 									escreva("Escolha a sua opção de pagamento: ")
 									leia(opcaoPagamento)
-									se (opcaoPagamento != 1 e opcaoPagamento != 2 e opcaoPagamento != 3)
-									{
+									se (opcaoPagamento != 1 e opcaoPagamento != 2 e opcaoPagamento != 3) {
 										escreva("Digite uma opção válida!\n")	
 									}
 								// (FIM) 9 - (faça - enquanto) que valida se a opção de pagamento é válida.
 								} enquanto(opcaoPagamento != 1 e opcaoPagamento != 2 e opcaoPagamento != 3)
 								
-								se (opcaoPagamento == 1) 
-								{
+								se (opcaoPagamento == 1) {
 									valorFatura = Mat.arredondar(((valorTotalCompra / 100) * 90), 2)
 									quantidadeFaturas = 0
 								}
-								senao se (opcaoPagamento == 2) 
-								{ 
+								senao se (opcaoPagamento == 2) { 
 									valorFatura = Mat.arredondar(((valorTotalCompra / 100) * 110), 2)
 									quantidadeFaturas = 1
 								}
-								senao 
-								{
+								senao {
 									valorFatura = Mat.arredondar(((valorTotalCompra / 200) * 115), 2)
 									quantidadeFaturas = 2
 								}
 							}
 							
-							senao
-							{
+							senao {
 								escreva("\n  Digite um valor válido para a resposta!\n")
 							}
 						// (FIM) 5 - (faça - enquanto) valida se a resposta de continuar compras é ou "S" ou "N".
@@ -420,19 +384,16 @@ programa
 		// (FIM) NOTA FISCAL APÓS A COMPRA SER FINALIZADA --------------------------------------------------------------------------------------------------------------------------------------------------- //
 					
 					
-					faca
-					{
+					faca {
 					// 10 - (faça - enquanto) valida a resposta para voltar à página inicial.
 						escreva("\n Voltar para a página inicial? [S/N]: ")
 						leia(respostaVoltarInicio)
 						
-						se (Texto.caixa_alta(respostaVoltarInicio) == "N") 
-						{
+						se (Texto.caixa_alta(respostaVoltarInicio) == "N") {
 							escreva("  ATÉ BREVE!!!")
 							pare
 						}
-						senao se (Texto.caixa_alta(respostaVoltarInicio) != "S") 
-						{
+						senao se (Texto.caixa_alta(respostaVoltarInicio) != "S") {
 							escreva("Digite uma resposta válida!\n")
 						}
 
@@ -442,13 +403,11 @@ programa
 				}
 				
 				// condicional responsável pela respostas [S/N]
-				senao se (Texto.caixa_alta(fazerCompras) == "N") 
-				{
+				senao se (Texto.caixa_alta(fazerCompras) == "N") {
 					escreva("  ATÉ BREVE!!!")
 					pare
 				} 
-				senao 
-				{
+				senao {
 					limpa()
 					cabecalho(3)
 					escreva("  Digite uma resposta válida!\n")
@@ -459,8 +418,7 @@ programa
 			
 
 		//a compra foi finalizada, então quando retornar ao início, o estoque selecionado será igual a zero.
-		para (x=0 ; x < DIVERSIDADE_PRODUTOS ; x++)
-		{
+		para (x=0 ; x < DIVERSIDADE_PRODUTOS ; x++) {
 			estoqueSelecionado[x] = 0
 		}
 		
@@ -478,8 +436,7 @@ programa
 
 	
 	// FUNÇÃO CABEÇALHO ------------------------------------------------------------------- //
-	funcao cabecalho(inteiro linhaPrincipal) 
-	{
+	funcao cabecalho(inteiro linhaPrincipal) {
 		     escreva("\t\t      ► PORTO GOL ACESSÓRIOS ESPORTIVOS ◄\n")
 			escreva("\t Desconto real, qualidade constante, satisfação por inteiro !")
 			linha(linhaPrincipal)
@@ -536,8 +493,7 @@ programa
 					
 		/* (laço para) que cria as informações presentes abaixo do menu: 
 		códigos, produtos, valores e estoque.*/
-		para(x=0 ; x < DIVERSIDADE_PRODUTOS ; x++) 
-		{ 
+		para(x=0 ; x < DIVERSIDADE_PRODUTOS ; x++) { 
 						
 			escreva("║ ", codigo[x],"\t│ ",produto[x],"\t│ ",valor[x],"\t  │ ",estoqueInicial[x],"\t\t\t║\n")	
 					
@@ -551,27 +507,21 @@ programa
 		
 		carrinhoQuantidade = 0
 		
-		para (x=0 ; x < DIVERSIDADE_PRODUTOS ; x++) 
-		{
-			se (carrinho[x] == 1 e estoqueSelecionado[x] != 0) 
-			{
+		para (x=0 ; x < DIVERSIDADE_PRODUTOS ; x++) {
+			se (carrinho[x] == 1 e estoqueSelecionado[x] != 0) {
 					carrinhoQuantidade++
 			}
 		}
-		se (carrinhoQuantidade == 0) 
-		{
+		se (carrinhoQuantidade == 0) {
 			escreva("║  └_____/ \t\t\t\t► Seu carrinho está vazio ◄\t\t║\n")
 		}
-		senao 
-		{
+		senao {
 			escreva("║  └_____/ \t\t\t\t► Adicione mais produtos! ◄\t\t║\n")
 		}
 		escreva("║    σ  σ [",carrinhoQuantidade, "]\t\t\t\t\t\t\t\t\t║\n")
 		escreva("║\t\t\t\t\t\t\t\t\t\t║\n")
-		para(x=0 ; x < DIVERSIDADE_PRODUTOS ; x++) 
-		{
-			se (carrinho[x] == 1 e estoqueSelecionado[x] != 0) 
-			{
+		para(x=0 ; x < DIVERSIDADE_PRODUTOS ; x++) {
+			se (carrinho[x] == 1 e estoqueSelecionado[x] != 0) {
 			escreva("║ ", codigo[x],"\t│ ",produto[x],"\t│ ",valor[x],"\t  │[", estoqueInicial[x], "] QTDE - \t", estoqueSelecionado[x], "\t║\n")
 			}
 		}
@@ -588,35 +538,29 @@ programa
 
 		// se o numero da Nota for igual ao do contador, significa que é uma nova nota, ou seja, novos valores serão guardados.
 		// Caso não seja igual, quer dizer que a pessoa está querendo uma nota passada, então o valor já havia sido guardado previamente.
-		se (numeroNotaFiscal == contadorNotaFiscal) 
-		{
+		se (numeroNotaFiscal == contadorNotaFiscal) {
 			
 			anoCalendarioVetor[numeroNotaFiscal] = Tipos.inteiro_para_cadeia(Calendario.ano_atual(), 10)
 			horaAtualVetor[numeroNotaFiscal] = Calendario.hora_atual(falso)
 			minutoAtualVetor[numeroNotaFiscal] = Calendario.minuto_atual()
 			
-			se (Calendario.dia_mes_atual() < 10) 
-			{
+			se (Calendario.dia_mes_atual() < 10) {
 				diaCalendario = Tipos.inteiro_para_cadeia(Calendario.dia_mes_atual(), 10)
 				diaCalendario = (0+diaCalendario)
 			}
-			senao 
-			{
+			senao {
 				diaCalendario = Tipos.inteiro_para_cadeia(Calendario.dia_mes_atual(), 10)
 			}
-			se (Calendario.mes_atual() < 10) 
-			{
+			se (Calendario.mes_atual() < 10) {
 				mesCalendario = Tipos.inteiro_para_cadeia(Calendario.mes_atual(), 10)
 				mesCalendario = (0+mesCalendario)
 			}
-			senao 
-			{
+			senao {
 				mesCalendario = Tipos.inteiro_para_cadeia(Calendario.mes_atual(), 10)
 			}
 		
 	
-			para (inteiro colunaMatriz = 0 ; colunaMatriz < DIVERSIDADE_PRODUTOS ; colunaMatriz ++)
-			{
+			para (inteiro colunaMatriz = 0 ; colunaMatriz < DIVERSIDADE_PRODUTOS ; colunaMatriz ++) {
 				estoqueSelecionadoMatriz[numeroNotaFiscal][colunaMatriz] = estoqueSelecionado[colunaMatriz]
 				
 				codigoMatriz[numeroNotaFiscal][colunaMatriz] = codigo[colunaMatriz]
@@ -671,29 +615,22 @@ programa
 					
 
 	// Série de formatações para que valores com diferentes números de caracteres não quebrem o layout da página.				
-	para(x=0 ; x < DIVERSIDADE_PRODUTOS ; x++) 
-	{
+	para(x=0 ; x < DIVERSIDADE_PRODUTOS ; x++) {
 		
-		se (estoqueSelecionadoMatriz[numeroNotaFiscal][x] != 0) 
-		{
+		se (estoqueSelecionadoMatriz[numeroNotaFiscal][x] != 0) {
 						
-				se (numeroNotaFiscal == contadorNotaFiscal) 
-				{
-					se (x <= 8) 
-					{
+				se (numeroNotaFiscal == contadorNotaFiscal) {
+					se (x <= 8) {
 					formataCodigo = codigoMatriz[numeroNotaFiscal][x] + " "	
 					}
-					senao 
-					{
+					senao {
 					formataCodigo = codigoMatriz[numeroNotaFiscal][x]
 					}
 										
-					se (estoqueSelecionadoMatriz[numeroNotaFiscal][x] <= 9) 
-					{
+					se (estoqueSelecionadoMatriz[numeroNotaFiscal][x] <= 9) {
 					formataEstoqueSelecionado[x] = estoqueSelecionadoMatriz[numeroNotaFiscal][x] + " "
 					}
-					senao 
-					{
+					senao {
 					formataEstoqueSelecionado[x] = estoqueSelecionadoMatriz[numeroNotaFiscal][x] +""	
 					}
 			
@@ -705,14 +642,12 @@ programa
 					formataValorTotalNumero = Texto.numero_caracteres(Tipos.real_para_cadeia(Mat.arredondar((Tipos.cadeia_para_real(valorMatriz[numeroNotaFiscal][x]) * estoqueSelecionado[x]), 2)))
 					formataImpostoNumero = Texto.numero_caracteres(Tipos.real_para_cadeia(Mat.arredondar(((Tipos.cadeia_para_real(valorMatriz[numeroNotaFiscal][x]) / 100) * 9), 2)))
 		
-					enquanto (formataValorTotalNumero <= 7) 
-					{
+					enquanto (formataValorTotalNumero <= 7) {
 					formataValorTotalNumero ++
 					formataValorTotal[x] += " "	
 					}
 					
-					enquanto (formataImpostoNumero <= 4)
-					{
+					enquanto (formataImpostoNumero <= 4) {
 					formataImpostoNumero ++
 					formataImposto[x] += " "		
 					}
@@ -734,7 +669,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 26859; 
+ * @POSICAO-CURSOR = 27981; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
