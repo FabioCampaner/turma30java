@@ -18,7 +18,7 @@ public class CadAluno {
 		for(int x = 0; x < alunes.length; x++) {
 			ativo[x] = true;
 
-			if(x > 9) {
+			if(x >= 9) {
 				matriculas[x] = "MAT-"+(x+1);
 			}
 			else {
@@ -27,11 +27,12 @@ public class CadAluno {
 			
 		}
 		for(int x = 0; x < alunes.length; x++) {
-			System.out.println(matriculas[x]+"\t"+alunes[x]);
+			
+			System.out.println(matriculas[x]+"\t\tNota: "+notas[x]+"\t\tSituação: "+((ativo[x])?"Ativo":"Inativo")+"\t\t"+alunes[x]);
 		}
 		do {
-			System.out.println("Digite uma matrícula: ");
-			matriculaEscolhida = leia.next();
+			System.out.println("\nDigite uma matrícula: ");
+			matriculaEscolhida = leia.next().toUpperCase();
 			for (int x = 0; x < alunes.length; x++) {
 				if (matriculaEscolhida.equals(matriculas[x])) {
 					System.out.println(matriculas[x]+"\t"+alunes[x]);
@@ -53,22 +54,12 @@ public class CadAluno {
 			}
 			
 			
-			
-			System.out.println("Digite se o aluno está ativo[A] ou inativo[I]: ");
-			atividadeAlune = leia.next().toUpperCase().charAt(0);
-			if (atividadeAlune == 'A') {
-				ativo[x] = true;
-			}
-			else {
-				ativo[x] = false;
-			}
-			
 			System.out.println("Continuar? [S/N]: ");
 			resposta = leia.next().toUpperCase().charAt(0);
 		} while(resposta == 'S');
 		
 		for (int x = 0; x < alunes.length; x++) {
-			if (notas[x] <= 5) {
+			if (notas[x] <= 5 && notas[x] != 0) {
 				System.out.println("Estude mais");
 			}
 			else if(notas[x] > 5) {
