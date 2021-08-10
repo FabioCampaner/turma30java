@@ -75,6 +75,10 @@ public abstract class Animal {
 		this.vida = vida;
 	}
 	
+	public void emitirSons() {
+		System.out.println("Emitindo o som do animal...");
+		
+	}
 	
 	
 	

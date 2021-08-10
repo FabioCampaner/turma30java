@@ -9,16 +9,6 @@ public class ContaEmpresa extends Conta{
 		super(numero, nomeCliente);
 		this.emprestimoEmpresa = emprestimoEmpresa;
 	}
-	
-	public void pedirEmprestimo(double emprestimoPedido) {
-		if(emprestimoPedido > emprestimoEmpresa) {
-			System.out.println("Não temos o valor pedido para o empréstimo.");
-		}
-		else {
-			this.emprestimoEmpresa -= emprestimoPedido;
-			super.credito(emprestimoPedido);
-		}
-	}
 
 	public double getEmprestimoEmpresa() {
 		return emprestimoEmpresa;
@@ -28,5 +18,14 @@ public class ContaEmpresa extends Conta{
 		this.emprestimoEmpresa = emprestimoEmpresa;
 	}
 
+	public void pedirEmprestimo(double emprestimoPedido) {
+		if(emprestimoPedido > emprestimoEmpresa || emprestimoPedido <= 0) {
+			System.out.println("Não temos o valor pedido para o empréstimo.");
+		}
+		else {
+			this.emprestimoEmpresa -= emprestimoPedido;
+			super.credito(emprestimoPedido);
+		}
+	}
 	
 }

@@ -1,5 +1,7 @@
 package entidades;
 
+import java.util.Scanner;
+
 public class Produto {
 
 	//Atributos
@@ -70,13 +72,22 @@ public class Produto {
 		}
 	}
 	
-	public void retiraEstoque(int quantidade) {
-		if(quantidade > this.estoque) {
+	public void retiraEstoque(String quantidade, Scanner leia) {
+		boolean validar = false;
+		do {
+		if(Integer.parseInt(quantidade) > this.estoque) {
 			System.out.println("Quantidade indisponível.");
+			quantidade = leia.next();
+		}
+		else if(Integer.parseInt(quantidade) < 0) {
+			System.out.println("Digite uma quantidade positiva.");
+			quantidade = leia.next();
 		}
 		else {
-			this.estoque -= quantidade;
+			this.estoque -= Integer.parseInt(quantidade);
+			validar = true;
 		}
+		} while(validar == false);
 	}
 	
 }
