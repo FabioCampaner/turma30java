@@ -19,6 +19,7 @@ public class PortoGol {
 		validar(resposta);
 		System.out.println("PASSOU");
 	}
+	
 	public static void validar(int resposta) {
 		if(resposta < 0) {
 			System.out.println("Resposta inválida");

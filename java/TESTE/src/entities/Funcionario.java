@@ -2,11 +2,12 @@ package entities;
 
 public class Funcionario {
 
+	//atributos
 	private String matricula;
-	private int horasTrabalhadas;
-	private double valorPorHora;
+	protected int horasTrabalhadas;
+	protected double valorPorHora;
 	
-	
+	//construtor
 	public Funcionario(String matricula, int horasTrabalhadas, double valorPorHora) {
 		super();
 		this.matricula = matricula;
@@ -14,6 +15,7 @@ public class Funcionario {
 		this.valorPorHora = valorPorHora;
 	}
 
+	//getters e setters e métodos
 	public String getMatricula() {
 		return matricula;
 	}
