@@ -23,10 +23,14 @@ public class Exercicio3Collections {
 		
 		Scanner leia = new Scanner(System.in);
 		List <Estoque> estoque = new ArrayList<>();
+		
 		estoque.add(new Estoque("camiseta",10));
 		estoque.add(new Estoque("calças",8));
 		estoque.add(new Estoque("móveis",4));
 		estoque.add(new Estoque("doces",100));
+		
+		
+		System.out.println();
 		
 		System.out.println("Produtos da loja: ");
 		System.out.println("Numero\tEstoque\tProduto ");
