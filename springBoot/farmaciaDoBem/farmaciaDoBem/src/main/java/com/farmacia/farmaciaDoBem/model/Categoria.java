@@ -1,4 +1,4 @@
-package com.minhaLojaDeGames.minhaLojaDeGames.model;
+package com.farmacia.farmaciaDoBem.model;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -17,12 +18,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "categoria")
 public class Categoria {
 
-	//atributos da tabela
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long id;
 	
-
+	@NotBlank
 	@Size(max = 20)
 	private String descricao;
 	
@@ -30,7 +30,6 @@ public class Categoria {
 	@JsonIgnoreProperties("categoria")
 	private List<Produto> produto;
 
-	//getters and setters
 	public long getId() {
 		return id;
 	}
